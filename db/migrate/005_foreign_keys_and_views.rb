@@ -26,8 +26,8 @@ class ForeignKeysAndViews < ActiveRecord::Migration[5.1]
     end
 
     def self.down
-      execute "ALTER TABLE \"inventory_movements\" DROP FOREIGN KEY \"fk_inventory_movement_part\""
-      execute "ALTER TABLE \"inventory_movements\" DROP FOREIGN KEY \"fk_inventory_movement_providor\""
-      execute "ALTER TABLE \"inventory_parts\" DROP FOREIGN KEY \"fk_inventory_parts_category\""
+      execute "ALTER TABLE \"inventory_movements\" DROP CONSTRAINT IF EXISTS \"fk_inventory_movement_part\""
+      execute "ALTER TABLE \"inventory_movements\" DROP CONSTRAINT IF EXISTS \"fk_inventory_movement_providor\""
+      execute "ALTER TABLE \"inventory_parts\" DROP CONSTRAINT IF EXISTS \"fk_inventory_parts_category\""
     end
   end
