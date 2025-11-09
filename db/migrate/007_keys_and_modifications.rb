@@ -66,15 +66,15 @@ class KeysAndModifications < ActiveRecord::Migration[5.1]
     end
 
     def self.down
-      execute "ALTER TABLE \"inventory_parts\" DROP INDEX \"uk_inventory_part_part_number\""
-      execute "ALTER TABLE \"inventory_categories\" DROP INDEX \"uk_inventory_category_name\""
-      execute "ALTER TABLE \"inventory_providors\" DROP INDEX \"uk_inventory_providor_identification\""
+      execute "DROP INDEX IF EXISTS \"uk_inventory_part_part_number\""
+      execute "DROP INDEX IF EXISTS \"uk_inventory_category_name\""
+      execute "DROP INDEX IF EXISTS \"uk_inventory_providor_identification\""
 
-      execute "ALTER TABLE \"inventory_movements\" DROP INDEX \"fk_inventory_movements_user\""
-      execute "ALTER TABLE \"inventory_movements\" DROP INDEX \"fk_inventory_movements_user_from\""
-      execute "ALTER TABLE \"inventory_movements\" DROP INDEX \"fk_inventory_movements_user_to\""
-      execute "ALTER TABLE \"inventory_movements\" DROP INDEX \"fk_inventory_movement_warehouse_from\""
-      execute "ALTER TABLE \"inventory_movements\" DROP INDEX \"fk_inventory_movement_warehouse_to\""
+      execute "DROP INDEX IF EXISTS \"fk_inventory_movements_user\""
+      execute "DROP INDEX IF EXISTS \"fk_inventory_movements_user_from\""
+      execute "DROP INDEX IF EXISTS \"fk_inventory_movements_user_to\""
+      execute "DROP INDEX IF EXISTS \"fk_inventory_movement_warehouse_from\""
+      execute "DROP INDEX IF EXISTS \"fk_inventory_movement_warehouse_to\""
       
       remove_column :inventory_movements, :user_from_id
       remove_column :inventory_movements, :user_to_id
