@@ -2,7 +2,7 @@ class KeysAndModifications < ActiveRecord::Migration[5.1]
     def self.up
       execute <<-SQL
         ALTER TABLE inventory_parts
-        ADD CONSTRAINT uk_inventory_part_part_numberUNIQUE (part_number);
+        ADD CONSTRAINT uk_inventory_part_part_number UNIQUE (part_number);
       SQL
 
       execute <<-SQL
