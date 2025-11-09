@@ -1,19 +1,19 @@
 class KeysAndModifications < ActiveRecord::Migration[5.1]
     def self.up
       execute <<-SQL
-        ALTER TABLE "inventory_parts" ADD
-          UNIQUE INDEX "uk_inventory_part_part_number"("part_number");
+        ALTER TABLE inventory_parts
+        ADD CONSTRAINT uk_inventory_part_part_numberUNIQUE (part_number);
       SQL
 
       execute <<-SQL
-          ALTER TABLE "inventory_categories" ADD
-            UNIQUE INDEX "uk_inventory_category_name"("name");
-        SQL
+        ALTER TABLE inventory_categories
+        ADD CONSTRAINT uk_inventory_category_name UNIQUE (name);
+      SQL
         
       execute <<-SQL
-          ALTER TABLE "inventory_providors" ADD
-            UNIQUE INDEX "uk_inventory_providor_identification"("identification");
-        SQL
+        ALTER TABLE inventory_providors
+        ADD CONSTRAINT uk_inventory_providor_identification UNIQUE (identification);
+      SQL
           
       add_column :inventory_movements, :user_from_id, :integer
       add_column :inventory_movements, :user_to_id, :integer
